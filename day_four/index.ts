@@ -2,11 +2,13 @@ import fs from 'fs'
 
 const data = fs.readFileSync('data.txt', 'utf-8');
 
-function fullIntersection(sections: number[][]) {
-    const first = sections[0]
-    const second = sections[1]
+type NumberTuple = [number, number]
 
-    function isFullIntersection(first: number[], second: number[]) {
+function fullIntersection(sections: number[][]) {
+    const first = sections[0] as NumberTuple
+    const second = sections[1] as NumberTuple
+
+    function isFullIntersection(first: NumberTuple, second: NumberTuple) {
         return first[0] >= second[0] && first[1] <= second[1]
     }
 
@@ -14,10 +16,10 @@ function fullIntersection(sections: number[][]) {
 }
 
 function partialIntersection(sections: number[][]) {
-    const first = sections[0]
-    const second = sections[1]
+    const first = sections[0] as NumberTuple
+    const second = sections[1] as NumberTuple
 
-    function isPartialIntersection(first: number[], second: number[]) {
+    function isPartialIntersection(first: NumberTuple, second: NumberTuple) {
         return first[0] <= second[0] && first[1] >= second[0]
     }
 
